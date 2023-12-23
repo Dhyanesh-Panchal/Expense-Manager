@@ -5,15 +5,19 @@ import { TextField } from '@mui/material';
 interface ExpenseFormProps {
     onSubmit: (expense: Expense) => void;
 }
-
+// --> react hook form ??
 const AddExpenseForm: React.FC<ExpenseFormProps> = ({ onSubmit }) => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         // Add your form validation logic here
         const expense = {
+            // @ts-ignore
             title: event.target?.title.value,
+            // @ts-ignore
             description: event.target?.description.value,
+            // @ts-ignore
             amount: parseFloat(event.target?.amount.value),
+            // @ts-ignore
             date: new Date(event.target?.date.value),
         };
         onSubmit(expense);
@@ -21,23 +25,10 @@ const AddExpenseForm: React.FC<ExpenseFormProps> = ({ onSubmit }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-            <div>
-                <label htmlFor='title'>Title:</label>
-                <input type='text' id='title' name='title' required />
-            </div>
-            <div>
-                <label htmlFor='description'>Description:</label>
-                <input type='text' id='description' name='description' required />
-            </div>
-            <div>
-                <label htmlFor='amount'>Amount:</label>
-                <input type='number' id='amount' name='amount' required />
-            </div>
-            <div>
-                <label htmlFor='date'>Date:</label>
-                <input type='date' id='date' name='date' required />
-            </div>
+            <TextField id="title" name='title' label="Title" variant="outlined" />
+            <TextField id="description" type='text-box' name='description' label="Description" variant="outlined" />
+            <TextField id="amount" type='number' name='amount' label="Amount" variant="outlined" />
+            <TextField id="date" type='date' name='date' label="Date" variant="outlined" />
             <button type='submit'>Submit</button>
         </form>
     );
