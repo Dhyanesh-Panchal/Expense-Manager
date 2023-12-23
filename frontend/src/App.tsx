@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import AddExpenseForm from './AddExpenseForm';
+import AddExpenseForm from './components/AddExpenseForm';
 import Expense from './datatypes/ExpenseInterface';
-import DisplayExpense from './DisplayExpense';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import DisplayExpense from './components/DisplayExpense';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import theme from './theme/mainTheme';
+import Header from './components/TopHeader';
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-  spacing: 2
-});
 
 const App: React.FC = () => {
   const [expenses, setExpenses] = useState<Expense[]>([]);
@@ -21,16 +17,15 @@ const App: React.FC = () => {
     console.log('Total Expenses', expenses);
   };
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <div>
-        <div className="expense-form">
-          <AddExpenseForm onSubmit={handleAddExpense} />
-        </div>
+        <Header />
+        <AddExpenseForm onSubmit={handleAddExpense} />
         <DisplayExpense expenses={expenses} />
       </div>
     </ThemeProvider>
   )
-};
+}
 
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Expense from './datatypes/ExpenseInterface';
+import Expense from '../datatypes/ExpenseInterface';
 
 interface DisplayExpenseProps {
     expenses: Expense[];
