@@ -83,7 +83,7 @@ const AddExpenseForm: React.FC<ExpenseFormProps> = ({ onSubmit }) => {
                             </LocalizationProvider>
                         </Grid>
                         <Grid item>
-                            <Button type="submit" variant="contained" color="primary" fullWidth>
+                            <Button type="submit" variant="contained" color="secondary" fullWidth>
                                 Submit
                             </Button>
                         </Grid>
