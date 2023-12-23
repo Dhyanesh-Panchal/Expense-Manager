@@ -77,6 +77,7 @@ const AddExpenseForm: React.FC<ExpenseFormProps> = ({ onSubmit }) => {
                                     label="Date"
                                     value={selectedDate}
                                     onChange={(date) => setSelectedDate(date)}
+                                    // @ts-ignore
                                     renderInput={(params) => <TextField {...params} required size="small" />}
                                 />
                             </LocalizationProvider>
