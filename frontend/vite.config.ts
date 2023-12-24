@@ -16,16 +16,29 @@ export default defineConfig({
         theme_color: '#4caf50',
         icons: [
           {
-            src: 'pwa-192x192.png', // 192x192px
-            sizes: '192x192',
-            type: 'image/png',
+            "src": "/icons/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
           },
           {
-            src: 'pwa-512x512.png', // 512x512px
-            sizes: '512x512',
-            type: 'image/png',
+            "src": "/icons/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
           },
-          // ... you can include other sizes as needed
+          {
+            "src": "/icons/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/icons/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+          }
         ],
         start_url: '/',
         display: 'standalone',
