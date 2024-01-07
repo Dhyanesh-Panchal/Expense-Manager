@@ -3,6 +3,7 @@ import Expense from '../datatypes/ExpenseInterface';
 import { Typography, Container, Paper, Grid, TextField, Button } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { useNavigate } from 'react-router-dom';
 
 interface ExpenseFormProps {
     onSubmit: (expense: Expense) => void;
@@ -11,6 +12,7 @@ interface ExpenseFormProps {
 const AddExpenseForm: React.FC<ExpenseFormProps> = ({ onSubmit }) => {
 
     const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+    const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -22,6 +24,8 @@ const AddExpenseForm: React.FC<ExpenseFormProps> = ({ onSubmit }) => {
             date: selectedDate ?? new Date(), // Use the selected date or default to a new date if null
         };
         onSubmit(newExpense);
+        navigate('/');
+
     };
 
     return (

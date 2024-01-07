@@ -6,6 +6,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme/mainTheme';
 import Header from './components/TopHeader';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './components/HomePage';
+
 
 
 const App: React.FC = () => {
@@ -19,11 +22,15 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
+      <Router>
         <Header />
-        <AddExpenseForm onSubmit={handleAddExpense} />
-        <DisplayExpense expenses={expenses} />
-      </div>
+        <Routes>
+          <Route path="/" element={<HomePage expenses={expenses} />} />
+          <Route path="/add-expense" element={<AddExpenseForm onSubmit={handleAddExpense} />} />
+          <Route path="/expenses" element={<DisplayExpense expenses={expenses} />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </Router>
     </ThemeProvider>
   )
 }
