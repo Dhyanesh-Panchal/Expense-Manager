@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import AddExpenseForm from './components/AddExpenseForm';
-import Expense from './datatypes/ExpenseInterface';
-import DisplayExpense from './components/DisplayExpense';
+import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme/mainTheme';
@@ -12,23 +9,14 @@ import HomePage from './components/HomePage';
 
 
 const App: React.FC = () => {
-  const [expenses, setExpenses] = useState<Expense[]>([]);
 
-
-  const handleAddExpense = (newexpense: Expense) => {
-    setExpenses([...expenses, newexpense])
-    console.log('Total Expenses', expenses);
-  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage expenses={expenses} />} />
-          <Route path="/add-expense" element={<AddExpenseForm onSubmit={handleAddExpense} />} />
-          <Route path="/expenses" element={<DisplayExpense expenses={expenses} />} />
-          {/* Add more routes as needed */}
+          <Route path="/" element={<HomePage />} />
         </Routes>
       </Router>
     </ThemeProvider>

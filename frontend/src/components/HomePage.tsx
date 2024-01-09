@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
         <div>
             <DisplayExpense expenses={expenses} />
             <Tooltip title="Add Expense" aria-label="add">
-                <Fab color="secondary" style={{ position: 'fixed', bottom: 16, right: 16 }} onClick={handleClickOpen}>
+                <Fab color="secondary" style={{ position: 'fixed', bottom: 56, right: 26 }} onClick={handleClickOpen}>
                     <AddIcon />
                 </Fab>
             </Tooltip>
