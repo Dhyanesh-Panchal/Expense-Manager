@@ -1,6 +1,7 @@
 // ExpenseCard.tsx
+
 import React from 'react';
-import { Card, CardContent, Typography, Avatar, Grid } from '@mui/material';
+import { Card, CardContent, Typography, Box } from '@mui/material';
 import Expense from '../datatypes/ExpenseInterface';
 
 interface ExpenseCardProps {
@@ -8,23 +9,24 @@ interface ExpenseCardProps {
 }
 
 const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense }) => {
-    const income = expense.amount > 0; // Assuming a positive amount indicates income
+    const income = expense.amount > 0;
     return (
-        <Card sx={{ display: 'flex', marginBottom: 2 }}>
-            <Avatar sx={{ bgcolor: income ? 'green' : 'red', alignSelf: 'center', marginLeft: 1 }}>
-                {/* You can put the first letter of the expense type or any icon here */}
-                E
-            </Avatar>
-            <CardContent sx={{ flexGrow: 1, display: 'flex', justifyContent: 'space-between' }}>
-                <Grid>
-                    <Typography variant="subtitle1">{expense.title}</Typography>
-                    <Typography variant="body2" color="textSecondary">
-                        {expense.date.toLocaleDateString()} at {expense.date.toLocaleTimeString()}
+        <Card sx={{ marginBottom: 1 }}>
+            <CardContent sx={{ padding: '8px 16px', "&:last-child": { paddingBottom: '8px' } }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box sx={{ flexGrow: 1 }}>
+                        <Typography variant="h6" component="h2" sx={{ fontWeight: 'bold' }}>
+                            {expense.title}
+                        </Typography>
+                        <Typography variant="body1" color={income ? 'green' : 'red'}>
+                            {income ? '+ ' : '- '}
+                            ₹{Math.abs(expense.amount).toFixed(2)}
+                        </Typography>
+                    </Box>
+                    <Typography variant="body2" color="textSecondary" align="right">
+                        {new Date(expense.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                     </Typography>
-                </Grid>
-                <Typography variant="subtitle1" color={income ? 'green' : 'red'}>
-                    ₹{expense.amount.toFixed(2)}
-                </Typography>
+                </Box>
             </CardContent>
         </Card>
     );
